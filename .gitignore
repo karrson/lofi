@@ -1,0 +1,9 @@
+log.txt
+rootfs.img
+*.elf
+*.iso
+*.hdd
+*.o
+*.d
+OS.img
+cstd/app
