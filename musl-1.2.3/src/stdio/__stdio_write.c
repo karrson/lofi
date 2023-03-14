@@ -5,8 +5,8 @@
 
 size_t __stdio_write(FILE *f, const unsigned char *buf, size_t len)
 {
-	int (**k_puts_n)(const char*) = AddressOfSystemData;
-	(*k_puts_n)(buf, len)
+	void (**k_puts_n)(const char*, size_t) = (void (**)(const char *, size_t))AddressOfSystemData;
+	(*k_puts_n)((const char*)buf, len);
 	return len;
 	//struct iovec iovs[2] = {
 	//	{ .iov_base = f->wbase, .iov_len = f->wpos-f->wbase },

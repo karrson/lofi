@@ -7,7 +7,10 @@ void puts_n(const char* str, size_t s)
 {
 	for (int i = 0; i < s; i++)
 	{
-		putc(str[i]);
+		char* c = "?";
+		c[0] = str[i];
+		c[1] = '\0';
+		fputs(c, stdout);
 	}
 }
 
@@ -22,10 +25,10 @@ extern "C" void _start()
 	
 	puts("This is a test! :)");
 	
-	void (**k_puts_n)(const char*) = AddressOfSystemData;
+	void (**k_puts_n)(const char*, size_t) = AddressOfSystemData;
 	*k_puts_n = puts_n;
 	
-	(*k_puts)("hmmmmmmmmmmmm");
+	(*k_puts_n)("hmmm123", 7);
 	
     done();
 }

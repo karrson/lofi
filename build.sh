@@ -1,9 +1,3 @@
-pushd musl-1.2.3
-./build.sh
-popd
-
-read -p "Press enter to continue..."
-
 shopt -s extglob
 shopt -s globstar
 
